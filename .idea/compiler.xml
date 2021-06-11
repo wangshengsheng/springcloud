@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springcloud-config-server" />
+        <module name="eurekaconsumer-node1" />
+        <module name="springcloud-zuul" />
+        <module name="eureka-provide" />
+        <module name="turbine" />
+        <module name="spring-cloud-gateway" />
+        <module name="spring-cloud-gateway-eureka" />
+        <module name="zipkin-server" />
+        <module name="spring-cloud-consul-producer" />
+        <module name="eurekaconsumer" />
+        <module name="springcloud-config-client" />
+        <module name="eurekaconsumer-node2" />
+        <module name="eureka-server" />
+        <module name="spring-cloud-consul-consumer" />
+        <module name="spring-cloud-consul-producer (1)" />
+        <module name="eureka-provide (1)" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springcloudconfigclient" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="eureka-provide" options="-parameters" />
+      <module name="eureka-provide (1)" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="eurekaconsumer" options="-parameters" />
+      <module name="eurekaconsumer-node1" options="-parameters" />
+      <module name="eurekaconsumer-node2" options="-parameters" />
+      <module name="eurekaserver" options="-parameters" />
+      <module name="spring-cloud-consul-consumer" options="-parameters" />
+      <module name="spring-cloud-consul-producer" options="-parameters" />
+      <module name="spring-cloud-consul-producer (1)" options="-parameters" />
+      <module name="spring-cloud-gateway" options="-parameters" />
+      <module name="spring-cloud-gateway-eureka" options="-parameters" />
+      <module name="springcloud-config-client" options="-parameters" />
+      <module name="springcloud-config-server" options="-parameters" />
+      <module name="springcloud-zuul" options="-parameters" />
+      <module name="springcloudconfigclient" options="-parameters" />
+      <module name="turbine" options="-parameters" />
+      <module name="zipkin-server" options="-parameters" />
+    </option>
+  </component>
+</project>

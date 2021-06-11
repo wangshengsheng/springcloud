@@ -1,0 +1,5 @@
+com/mt/FeignDemo/HelloRemote.class
+com/mt/FeignDemo/HelloRemoteHystrix.class
+com/mt/Web/ConsumerController.class
+com/mt/App.class
+com/mt/ConsumerApplication.class

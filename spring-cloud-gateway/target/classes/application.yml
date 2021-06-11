@@ -1,0 +1,142 @@
+server:
+  port: 8080
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: neo_route
+#          uri: http://www.ityouknow.com
+#          predicates:
+#            - Path=/spring-cloud
+#
+
+
+# 通过时间匹配
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: time_route
+#          uri: http://ityouknow.com
+#          predicates:
+##            - After=2018-01-20T06:06:06+08:00[Asia/Shanghai]
+##            - Before=2018-01-20T06:06:06+08:00[Asia/Shanghai]
+#            - Between=2018-01-20T06:06:06+08:00[Asia/Shanghai], 2022-01-20T06:06:06+08:00[Asia/Shanghai]
+#
+
+# 通过 Cookie 匹配
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: cookie_route
+#          uri: http://ityouknow.com
+#          predicates:
+#            - Cookie=ityouknow, kee.e
+
+
+# 通过 Header 属性匹配
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: header_route
+#          uri: http://ityouknow.com
+#          predicates:
+#            - Header=X-Request-Id, \d+
+
+# 通过 Host 匹配
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: host_route
+#          uri: http://ityouknow.com
+#          predicates:
+#            - Host=**.ityouknow.com
+
+# 通过请求方式匹配  可以通过是 POST、GET、PUT、DELETE 等不同的请求方式来进行路由。
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: method_route
+#          uri: http://ityouknow.com
+#          predicates:
+#            - Method=GET
+
+# 通过请求路径匹配
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: host_route
+#          uri: http://ityouknow.com
+#          predicates:
+#            - Path=/foo/{segment}
+
+# 通过请求参数匹配
+# 经过测试发现只要请求汇总带有 smile 参数即会匹配路由，不带 smile 参数则不会匹配。
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: query_route
+#          uri: http://ityouknow.com
+#          predicates:
+#            - Query=smile
+
+# 还可以将 Query 的值以键值对的方式进行配置，这样在请求过来时会对属性值和正则进行匹配，匹配上才会走路由。
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: query_route
+#          uri: http://ityouknow.com
+#          predicates:
+#            - Query=keep, pu.
+# 这样只要当请求中包含 keep 属性并且参数值是以 pu 开头的长度为三位的字符串才会进行匹配和路由。
+
+
+
+#Predicate 也支持通过设置某个 ip 区间号段的请求才会路由，RemoteAddr Route Predicate 接受 cidr 符号(IPv4 或 IPv6 )字符串的列表(最小大小为1)，
+# 例如 192.168.0.1/16 (其中 192.168.0.1 是 IP 地址，16 是子网掩码)。
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: remoteaddr_route
+          uri: http://ityouknow.com
+          predicates:
+            #这里的ip写的是本机的ip   在终端访问：curl 172.18.227.3:8080
+#            - RemoteAddr=172.18.227.3/17
+            - RemoteAddr=172.18.227.3/24
+
+
+# 组合使用
+# 各种 Predicates 同时存在于同一个路由时，请求必须同时满足所有的条件才被这个路由匹配。
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: host_foo_path_headers_to_httpbin
+#        uri: http://ityouknow.com
+#        predicates:
+#          - Host=**.foo.org
+#          - Path=/headers
+#          - Method=GET
+#          - Header=X-Request-Id, \d+
+#          - Query=foo, ba.
+#          - Query=baz
+#          - Cookie=chocolate, ch.p
+#          - After=2018-01-20T06:06:06+08:00[Asia/Shanghai]
+
+
+
+
+
+
+#  id：我们自定义的路由 ID，保持唯一
+#  uri：目标服务地址
+#  predicates：路由条件，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。
+#  filters：过滤规则，本示例暂时没用。
